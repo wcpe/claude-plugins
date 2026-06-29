@@ -1,0 +1,20 @@
+{
+  "name": "wcpe",
+  "owner": { "name": "wcpe", "url": "https://github.com/wcpe" },
+  "metadata": {
+    "description": "WCPE 的 Claude Code 插件市场（组织级，索引各插件，插件代码留各自仓库）",
+    "version": "1.0.0"
+  },
+  "plugins": [
+    {
+      "name": "sdd-skills",
+      "source": { "source": "github", "repo": "wcpe/sdd-skills" },
+      "description": "规格驱动开发（SDD）技能集：2 个脚手架技能（init/retrofit）+ 16 个 sdd-* 迭代工作流技能（拆解/开发/修复/重构/回滚/发布/快照/热修/依赖/文档/同步/治理/验收/PRD 对齐/并行/审查）。"
+    },
+    {
+      "name": "mc-testkit",
+      "source": { "source": "github", "repo": "wcpe/mc-testkit-skill" },
+      "description": "给 Minecraft 插件对接 mc-testkit 做 E2E 编排与 serve 持久手测：技能 + 斜杠命令(/mc-testkit-init|serve|scenario) + 冻结契约护栏 hook + 只读 MCP server。只走 maven 网络插件、禁 includeBuild。"
+    }
+  ]
+}
