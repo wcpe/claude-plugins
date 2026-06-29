@@ -19,7 +19,7 @@ WCPE 的 Claude Code **插件市场（marketplace）**。本仓库**不含插件
 
 ## 加新插件
 
-往 `.claude-plugin/marketplace.json` 的 `plugins` 数组加一项，`source` 指向插件仓库（`{ "source": "github", "repo": "wcpe/<repo>" }`）即可；插件代码不进本仓库。
+往 `.claude-plugin/marketplace.json` 的 `plugins` 数组加一项，`source` 用**显式 HTTPS**：`{ "source": "url", "url": "https://github.com/wcpe/<repo>.git" }`；插件代码不进本仓库。
 
 ## 团队自动分发
 
@@ -37,4 +37,4 @@ WCPE 的 Claude Code **插件市场（marketplace）**。本仓库**不含插件
 }
 ```
 
-> 字段名 / `source` 写法以你当前 Claude Code 的 `/plugin` 文档为准（插件机制在演进）。若跨仓库 `source` 对象式不被识别，备选：把插件作 git 子模块放进本仓库、`source` 改用相对路径（`"./sdd-skills"` / `"./mc-testkit"`）。
+> 跨仓库插件的 `source` 用 `{ "source": "url", "url": "https://….git" }`（显式 HTTPS，已对照可用市场 superpowers-marketplace 验证）。**别用** `{ "source": "github", "repo": "…" }`——该形式会走 SSH 克隆（`git@github.com:`），没配 GitHub SSH 主机密钥 / 账号密钥的机器会报 `Host key verification failed`。

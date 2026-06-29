@@ -8,12 +8,12 @@
   "plugins": [
     {
       "name": "sdd-skills",
-      "source": { "source": "github", "repo": "wcpe/sdd-skills" },
+      "source": { "source": "url", "url": "https://github.com/wcpe/sdd-skills.git" },
       "description": "规格驱动开发（SDD）技能集：2 个脚手架技能（init/retrofit）+ 16 个 sdd-* 迭代工作流技能（拆解/开发/修复/重构/回滚/发布/快照/热修/依赖/文档/同步/治理/验收/PRD 对齐/并行/审查）；Claude Code 下另带斜杠命令(/sdd|/sdd-status…) + 防漂移护栏 hook(提交门/ADR 不可变/文档同步) + MCP(sdd_check_drift)。"
     },
     {
       "name": "mc-testkit",
-      "source": { "source": "github", "repo": "wcpe/mc-testkit-skill" },
+      "source": { "source": "url", "url": "https://github.com/wcpe/mc-testkit-skill.git" },
       "description": "给 Minecraft 插件对接 mc-testkit 做 E2E 编排与 serve 持久手测：技能 + 斜杠命令(/mc-testkit-init|serve|scenario) + 冻结契约护栏 hook + 只读 MCP server。只走 maven 网络插件、禁 includeBuild。"
     }
   ]
