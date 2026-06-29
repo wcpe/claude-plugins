@@ -15,6 +15,11 @@
       "name": "mc-testkit",
       "source": { "source": "url", "url": "https://github.com/wcpe/mc-testkit-skill.git" },
       "description": "给 Minecraft 插件对接 mc-testkit 做 E2E 编排与 serve 持久手测：技能 + 斜杠命令(/mc-testkit-init|serve|scenario) + 冻结契约护栏 hook + 只读 MCP server。只走 maven 网络插件、禁 includeBuild。"
+    },
+    {
+      "name": "privacy-guard",
+      "source": { "source": "url", "url": "https://github.com/wcpe/privacy-guard-skill.git" },
+      "description": "隐私/敏感数据检测：rg+Python 引擎(熵值/Luhn/身份证校验/白名单)扫工作区与 git 全量历史，五大类脱敏分级报告 + 修复指引；Claude Code 下另带斜杠命令(/privacy-scan…) + 提交门护栏 hook(暂存命中 critical 即阻断提交) + MCP(privacy_scan)。只检测不改写。"
     }
   ]
 }
