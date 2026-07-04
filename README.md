@@ -1,38 +1,92 @@
-# wcpe — Claude Code 插件市场
+# wcpe — Plugin Marketplaces
 
-WCPE 的 Claude Code **插件市场（marketplace）**。本仓库**不含插件代码**，只用一份 `.claude-plugin/marketplace.json` **列出** WCPE 的各插件、指向它们各自的仓库——插件代码留在它们自己的仓库，本市场只做索引。
+WCPE 的插件市场索引仓库，当前仓库名为 `plugin-marketplaces`。本仓库同时维护 **Claude Code** 与 **OpenAI Codex** 两类插件市场索引；插件源码仍保留在各自独立仓库中，本仓库只负责声明插件条目和源码仓库地址。
 
-## 用法
+## 市场索引结构
 
-```bash
-/plugin marketplace add wcpe/claude-plugins      # 加这个市场（一次；wcpe/claude-plugins = 本仓库的 github owner/repo）
-/plugin install sdd-skills@wcpe                  # 装 SDD 规格驱动开发技能集
-/plugin install mc-testkit@wcpe                  # 装 mc-testkit E2E / serve 对接
+```text
+plugin-marketplaces/
+├── .claude-plugin/
+│   └── marketplace.json        # Claude Code 插件市场
+├── .agents/
+│   └── plugins/
+│       └── marketplace.json    # OpenAI Codex 插件市场
+└── README.md
 ```
 
-## 收录的插件
+## Claude Code 用法
+
+```bash
+/plugin marketplace add wcpe/plugin-marketplaces      # 加这个市场（一次；wcpe/plugin-marketplaces = 本仓库的 github owner/repo）
+/plugin install sdd-skills@wcpe                       # 装 SDD 规格驱动开发技能集
+/plugin install mc-testkit@wcpe                       # 装 mc-testkit E2E / serve 对接
+/plugin install privacy-guard@wcpe                    # 装隐私/敏感数据检测工具
+```
+
+## Codex 用法
+
+```bash
+codex plugin marketplace add D:\ProjectsSkill\plugin-marketplaces
+```
+
+添加市场后，在 Codex 插件界面安装 `sdd-skills@wcpe`。
+
+## Claude Code 收录的插件
 
 | 插件 | 仓库 | 内容 |
 |---|---|---|
 | `sdd-skills` | [wcpe/sdd-skills](https://github.com/wcpe/sdd-skills) | 18 个 SDD 技能（2 脚手架 + 16 迭代工作流），纯技能包 |
 | `mc-testkit` | [wcpe/mc-testkit-skill](https://github.com/wcpe/mc-testkit-skill) | mc-testkit E2E 编排 + serve 持久手测：1 技能 + 3 命令 + 护栏 hook + MCP |
+| `privacy-guard` | [wcpe/privacy-guard-skill](https://github.com/wcpe/privacy-guard-skill) | 隐私/敏感数据检测：工作区与 git 历史扫描、脱敏分级报告、提交门护栏 hook + MCP |
 
-## 加新插件
+## Codex 收录的插件
 
-往 `.claude-plugin/marketplace.json` 的 `plugins` 数组加一项，`source` 用**显式 HTTPS**：`{ "source": "url", "url": "https://github.com/wcpe/<repo>.git" }`；插件代码不进本仓库。
+| 插件 | 源码仓库 | 内容 |
+|---|---|---|
+| `sdd-skills` | [wcpe/sdd-skills](https://github.com/wcpe/sdd-skills) | SDD 规格驱动开发技能集：18 个 workflow skills、Codex 展示元数据、workflow skill cards、MCP 漂移审计工具。 |
 
-## 团队自动分发
+## 加新 Claude Code 插件
+
+往 `.claude-plugin/marketplace.json` 的 `plugins` 数组加一项，`source` 用**显式 HTTPS**：
+
+```json
+{ "source": "url", "url": "https://github.com/wcpe/<repo>.git" }
+```
+
+插件代码不进本仓库。
+
+## 加新 Codex 插件
+
+在 `.agents/plugins/marketplace.json` 的 `plugins` 数组中添加对应条目。插件在 GitHub 仓库根目录时使用：
+
+```json
+{
+  "name": "plugin-name",
+  "source": {
+    "source": "url",
+    "url": "https://github.com/wcpe/plugin-name.git"
+  },
+  "policy": {
+    "installation": "AVAILABLE",
+    "authentication": "ON_INSTALL"
+  },
+  "category": "Productivity"
+}
+```
+
+## Claude Code 团队自动分发
 
 在**消费方仓库**的 `.claude/settings.json` 里声明，clone 的人自动装上：
 
 ```jsonc
 {
   "extraKnownMarketplaces": {
-    "wcpe": { "source": { "source": "github", "repo": "wcpe/claude-plugins" } }
+    "wcpe": { "source": { "source": "github", "repo": "wcpe/plugin-marketplaces" } }
   },
   "enabledPlugins": {
     "sdd-skills@wcpe": true,
-    "mc-testkit@wcpe": true
+    "mc-testkit@wcpe": true,
+    "privacy-guard@wcpe": true
   }
 }
 ```

@@ -1,0 +1,20 @@
+{
+  "name": "wcpe",
+  "interface": {
+    "displayName": "WCPE"
+  },
+  "plugins": [
+    {
+      "name": "sdd-skills",
+      "source": {
+        "source": "url",
+        "url": "https://github.com/wcpe/sdd-skills.git"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}
