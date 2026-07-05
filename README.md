@@ -29,7 +29,7 @@ plugin-marketplaces/
 codex plugin marketplace add D:\ProjectsSkill\plugin-marketplaces
 ```
 
-添加市场后，在 Codex 插件界面安装 `sdd-skills@wcpe`。
+添加市场后，在 Codex 插件界面安装 `sdd-skills@wcpe` 或 `mc-testkit-skill@wcpe`。
 
 ## Claude Code 收录的插件
 
@@ -44,6 +44,7 @@ codex plugin marketplace add D:\ProjectsSkill\plugin-marketplaces
 | 插件 | 源码仓库 | 内容 |
 |---|---|---|
 | `sdd-skills` | [wcpe/sdd-skills](https://github.com/wcpe/sdd-skills) | SDD 规格驱动开发技能集：18 个 workflow skills、Codex 展示元数据、workflow skill cards、MCP 漂移审计工具。 |
+| `mc-testkit-skill` | [wcpe/mc-testkit-skill](https://github.com/wcpe/mc-testkit-skill) | mc-testkit E2E 编排与 serve 持久手测：技能、只读 MCP、Codex 展示元数据、内置模板资产。 |
 
 ## 加新 Claude Code 插件
 
